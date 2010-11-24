@@ -54,6 +54,6 @@ EOS
   #    Haml::Engine.new(HAML_TASK_SIDEBAR_EXT).render(view, :model => context[model])
   #  end
 
-  end
+  #end
   
 end

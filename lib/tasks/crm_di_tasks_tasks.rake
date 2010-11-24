@@ -5,28 +5,28 @@ namespace :crm do
 
     namespace :tasks do
 
+      def create_lookup(lookup_name, description, parent = nil, status = "Active")
+        if (t = Lookup.find_by_name(lookup_name))
+          puts "#{lookup_name} lookup exists"
+        else
+          puts "Creating #{lookup_name} lookup"
+          t = (parent.nil? ? Lookup : parent.lookups).create(:name => lookup_name, :description => description, :status => status)
+          t.save!
+          puts "Created #{lookup_name} lookup"
+        end
+        return t
+      end
+      
       desc "Setup DI task extentions"  
       task :setup => :environment do
 
         puts "\n" << ("=" * 80) << "\n= Installing DI task extentions\n" << ("=" * 80)
 
-        if (t = Lookup.find_by_name("task.type"))
-          puts "task.type lookup exists"
-        else
-          puts "Creating task.type lookup"
-          t = Lookup.create(:name => "task.type", :description => "Task Type", :status => "Active")
-          puts "Created task.type lookup"
-        end
-
+        c = create_lookup("task.category", "Task Category")
         puts "-" * 80
-
-        if (s = t.lookups.find_by_name("task.type.subtype"))
-          puts "task.type.subtype lookup exists"
-        else
-          puts "Creating task.type.subtype lookup"
-          s = t.lookups.create(:name => "task.type.subtype", :description => "Task Subtype", :status => "Active")
-          puts "Created task.type.subtype lookup"
-        end
+        ot = create_lookup("task.category.outcometype", "Task Outcome Type", c)
+        puts "-" * 80
+        ost = create_lookup("task.category.outcometype.subtype", "Task Outcome Subtype", ot)
 
         puts ("=" * 80) << "\n= Installed DI task extentions\n" << ("=" * 80) << "\n\n"
 
