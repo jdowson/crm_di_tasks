@@ -1,0 +1,15 @@
+en-US:
+
+  di:
+
+    tasks:
+      #----------------------------------------------------------------------------
+      # Plugin wide strings.
+      #----------------------------------------------------------------------------
+      description:           Description
+      outcome_type:          Outcome
+      outcome_type_help:     Task status at completion
+      outcome_sub_type:      Subtype
+      outcome_sub_type_help: ""
+      outcome_text:          Outcome notes
+

@@ -1,9 +1,9 @@
 
-module CRMDIContacts
+module CRMDITasks
 
   module FFViewHelpers
 
-    def contact_side_bar_item(caption, id)
+    def tasks_side_bar_item(caption, id)
       "<div>#{caption}: <b style='color:#{lkup_color(id)}'>#{lkup_ld(id)}</b></div>" unless id.nil?
     end
 
@@ -11,4 +11,4 @@ module CRMDIContacts
 
 end
 
-ActionView::Base.send(:include, CRMDIContacts::FFViewHelpers)
+ActionView::Base.send(:include, CRMDITasks::FFViewHelpers)
