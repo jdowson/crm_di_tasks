@@ -7,9 +7,7 @@ en-US:
       # Plugin wide strings.
       #----------------------------------------------------------------------------
       description:           Description
-      outcome_type:          Outcome
-      outcome_type_help:     Task status at completion
+      outcome_type:          Outcome type
       outcome_sub_type:      Subtype
-      outcome_sub_type_help: ""
       outcome_text:          Outcome notes
-
+      outcome:               Outcome
