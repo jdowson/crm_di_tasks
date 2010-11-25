@@ -1,8 +1,8 @@
 class AddTextAndOutcomeFieldsToTasks < ActiveRecord::Migration
   def self.up
 
-    add_column :tasks, :description,         :string,  { :null => true, :default => '', :limit => 255 }
-    add_column :tasks, :outcome_text,        :string,  { :null => true, :default => '', :limit => 255 }
+    add_column :tasks, :description,         :text,    { :null => true, :default => ''  }
+    add_column :tasks, :outcome_text,        :text,    { :null => true, :default => ''  }
     add_column :tasks, :outcome_type_id,     :integer, { :null => true, :default => nil }
     add_column :tasks, :outcome_sub_type_id, :integer, { :null => true, :default => nil }
 

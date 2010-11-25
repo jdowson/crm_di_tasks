@@ -11,3 +11,4 @@ en-US:
       outcome_sub_type:      Subtype
       outcome_text:          Outcome notes
       outcome:               Outcome
+      outcome_intro:         Details of how the task was handled, usually only completed once the task is completed.
