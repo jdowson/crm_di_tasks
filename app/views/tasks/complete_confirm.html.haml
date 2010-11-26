@@ -1,0 +1,23 @@
+%html{ :xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => :en,  :lang => :en }
+
+  %head
+    = render :partial => "messagebox/button_styles"
+
+  %body
+    .MB_alert
+      %p
+      .mboxcaption
+        = image_tag("di_core/icon_question.png", :alt => "#{@icon}", :style => "float:left; padding-right:0.75em; padding-left:0.25em;")
+        %span{ :style => "vertical-align:middle;" }
+          %b 
+            = "#{t :complete_prompt, :scope => [:di, :tasks]} '#{@task.name}' ?"
+        - remote_form_for(@task, :url => { :action => :complete_confirm_update }, :html => one_submit_only(:task)) do |f|
+          = hidden_field_tag :button, ""
+          = f.submit "", { :style => "display:none;" }
+          = f.hidden_field :category
+          %div{ :style => "text-align: left;" }
+            = render :partial => "outcome_fields", :locals => { :f => f }
+          %br
+      = render :partial => "messagebox/button_bar", :locals => { :buttons => @buttons }
+      :javascript
+        $('task_outcome_text').focus()

@@ -1,12 +1,10 @@
 crm_di_tasks
 ============
 
-** THIS MODULE IS UNDER DEVELOPMENT AND CANNOT BE USEFULLY INSTALLED AT THE PRESENT TIME **
-
 Overview
 --------
 
-For the moment this plugin simply acts as a test harness for the [crm_di_core][4] plugin for [Fat Free CRM][2], adding the following attributes to the *task* model:
+For the moment this plugin simply acts as a test harness for the [crm_di_core][4] plugin for [Fat Free CRM][2], as well as demonstrating the changing of Fat Free behaviour through controller hooks, adding the following attributes to the *task* model:
 
 * **task_text** - A longer description for the task
 * **outcome_type_id** - A mandatory code (with default) to record the successful completion of the task from a **lookup** list. The list cascades from the task **category** to allow different outcomes per category.

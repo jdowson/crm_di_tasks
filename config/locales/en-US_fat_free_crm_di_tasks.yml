@@ -12,3 +12,8 @@ en-US:
       outcome_text:          Outcome notes
       outcome:               Outcome
       outcome_intro:         Details of how the task was handled, usually only completed once the task is completed.
+      confirm_complete:      Confirm Task Completion Details
+      complete_prompt:       Complete task
+      button_complete:       Complete Task
+      button_cancel:         Cancel
+      button_no_complete:    Save Without Completing

@@ -1,0 +1,17 @@
+%table{ :width => 476, :cellpadding => 0, :cellspacing => 0 }
+  %tr
+    %td{ :valign => :top }
+      .label 
+        = I18n.t(:outcome_type, :scope => [:di, :tasks]) << ":" 
+      = f.lookup_select :outcome_type_id, { :lookup_name => "task.category.outcometype", :parent => :category, :parent_key_type => :code, :include_blank_if_empty => true }, { }, { :style => "width:160px" }
+    %td= spacer
+    %td{ :valign => :top }
+      #stype
+        .label 
+          = I18n.t(:outcome_sub_type, :scope => [:di, :tasks]) << ":"
+        = f.lookup_select :outcome_sub_type_id, { :lookup_name => "task.category.outcometype.subtype", :parent => :outcome_type_id, :hide_element_if_empty => "stype", :include_blank_if_empty => true }, { }, { :style => "width:308px" }
+  %tr
+    %td{ :valign => :top, :colspan => 3 }
+      .label 
+        = I18n.t(:outcome_text, :scope => [:di, :tasks]) << ":"
+      = f.text_area :outcome_text, { :rows => 2, :style => "width:472px;" }

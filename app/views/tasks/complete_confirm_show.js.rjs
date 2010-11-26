@@ -1,0 +1,1 @@
+page << "Modalbox.show('/tasks/complete_confirm/#{controller.params[:id]}', {title: '#{t(:confirm_complete, :scope => [:di, :tasks])}', width: 560, beforeHide: function() { $('task_submit').simulate('click'); } });"
