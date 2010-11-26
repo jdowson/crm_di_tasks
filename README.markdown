@@ -1,20 +1,44 @@
 crm_di_tasks
 ============
 
+** For the latest stable version use the v0.1.1 tag as the HEAD version will contain incomplete integration work to test the use of the Delta Indigo workflow manager with Fat Free CRM.**
+
 Overview
 --------
 
-For the moment this plugin simply acts as a test harness for the [crm_di_core][4] plugin for [Fat Free CRM][2], as well as demonstrating the changing of Fat Free behaviour through controller hooks, adding the following attributes to the *task* model:
+In versions > v0.1.1 this module modifies the behaviour of the [Fat Free CRM][2] **tasks** model to support attributes required for the proper functioning of the Delta Indigo workflow manager.
 
+** OUTCOME RELATED **
 * **task_text** - A longer description for the task
 * **outcome_type_id** - A mandatory code (with default) to record the successful completion of the task from a **lookup** list. The list cascades from the task **category** to allow different outcomes per category.
 * **outcome_sub_type_id** - An optional code to record further status information on the completion of the task from a **lookup** list. The list cascades from the task **outcome_type_id** to allow different outcomes per category.
 * **outcome_text** - A field to allow the user to add notes relating to the outcome of the task.
 
-**task_text** will be availible at all times on the task edit form, while the other fields will only be visible on a completed task. 
+**task_text** will be availible at all times on the task edit form, while the other fields will be visible in a separate section of the form. 
 
-The outcome related fields will only be visible on task lists (except outcome_text) and the edit form once the task is marked is complete. 
+The outcome related fields will be visible on task lists (except outcome_text) once the task is marked is complete. 
+
 The opportunity to complete the outcome fields will also be provided in a pop-up box when the task is completed.
+
+
+** PARENT ASSET STATUS TRACKING **
+
+The Delta Indigo workflow manager typically uses the completion by users of automatically generated tasks to progress the handling (such as status updates) of a parent asset. 
+
+To provide a form of audit trail for these changes, the status of the parent asset (in this prototype it is assumed the asset will be an opportunity and 'status' will be used to indicate status) will be recorded on the task at both task creation and after each update.
+
+* **asset_status_create** - Records the status (stage) of the parent asset with the task is initially created.
+* **asset_status_update** - Records the status (stage) of the parent asset when the task is updated or completed.
+
+These attributes will be visible, read-only on the task edit form.
+
+In the future this behaviour will be delegated to an 'acts_as_workflowable' module.
+
+
+Prerequisites
+-------------
+
+This module requires the [crm_di_core][4] plugin for [Fat Free CRM][2] to be installed and setup as per the repository instructions.
 
 
 Installation

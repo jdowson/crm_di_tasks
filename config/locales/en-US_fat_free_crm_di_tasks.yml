@@ -17,3 +17,8 @@ en-US:
       button_complete:       Complete Task
       button_cancel:         Cancel
       button_no_complete:    Save Without Completing
+      asset_status:          Opportunity status
+      asset_status_intro:    Status audit for the related opportunity
+      asset_status_create:   Status at creation
+      asset_status_update:   Status at last update
+      

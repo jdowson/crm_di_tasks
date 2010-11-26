@@ -19,23 +19,18 @@ class DITasksFFViewHooks < FatFreeCRM::Callback::Base
       %small#outcome_information_intro{ hidden_if(!collapsed) }
         = t(:outcome_intro, :scope => [:di, :tasks]) unless t(:outcome_intro, :scope => [:di, :tasks]).blank?
       #outcome_information{ hidden_if(collapsed) }
-        %table{ :width => 476, :cellpadding => 0, :cellspacing => 0 }
-          %tr
-            %td{ :valign => :top }
-              .label 
-                = I18n.t(:outcome_type, :scope => [:di, :tasks]) << ":" 
-              = f.lookup_select :outcome_type_id, { :lookup_name => "task.category.outcometype", :parent => :category, :parent_key_type => :code, :include_blank_if_empty => true }, { }, { :style => "width:160px" }
-            %td= spacer
-            %td{ :valign => :top }
-              #stype
-                .label 
-                  = I18n.t(:outcome_sub_type, :scope => [:di, :tasks]) << ":"
-                = f.lookup_select :outcome_sub_type_id, { :lookup_name => "task.category.outcometype.subtype", :parent => :outcome_type_id, :hide_element_if_empty => "stype", :include_blank_if_empty => true }, { }, { :style => "width:308px" }
-          %tr
-            %td{ :valign => :top, :colspan => 3 }
-              .label 
-                = I18n.t(:outcome_text, :scope => [:di, :tasks]) << ":"
-              = f.text_area :outcome_text, { :rows => 2, :style => "width:472px;" }
+        = render :partial => "outcome_fields", :locals => { :f => f }
+- unless !@task.asset_id || @task.asset_type != "Opportunity"
+  %tr
+    %td{ :valign => :top, :colspan => 5 }
+      %br
+      - collapsed = true
+      = subtitle :asset_status_information, collapsed, t(:asset_status, :scope => [:di, :tasks]) 
+      .section
+        %small#asset_status_intro{ hidden_if(!collapsed) }
+          = t(:asset_status_intro, :scope => [:di, :tasks]) unless t(:asset_status_intro, :scope => [:di, :tasks]).blank?
+        #asset_status_information{ hidden_if(collapsed) }
+          = render :partial => "asset_status_fields", :locals => { :task => @task }
 EOS
 
 

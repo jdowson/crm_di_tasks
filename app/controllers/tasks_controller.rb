@@ -62,6 +62,11 @@ class TasksController < ApplicationController
 
       complete_attrs = (action_type == :complete) ? { :completed_at => Time.now, :completed_by => @current_user.id } : { }
       
+      if(@task.asset_id?)
+        asset = @task.asset
+        @task.asset_status_update = asset.stage if asset.respond_to?("stage")
+      end 
+
       if @task.due_at && (@task.due_at < Date.today.to_time)
         @task_before_update.bucket = "overdue"
       else
