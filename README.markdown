@@ -1,7 +1,7 @@
 crm_di_tasks
 ============
 
-** For the latest stable version use the v0.1.1 tag as the HEAD version will contain incomplete integration work to test the use of the Delta Indigo workflow manager with Fat Free CRM.**
+** NOTE: THE CURRENT VERSION REQUIRES VERSION 0.1.2 OR LATER OF THE crm_di_core MODULE **
 
 Overview
 --------
@@ -38,7 +38,7 @@ In the future this behaviour will be delegated to an 'acts_as_workflowable' modu
 Prerequisites
 -------------
 
-This module requires the [crm_di_core][4] plugin for [Fat Free CRM][2] to be installed and setup as per the repository instructions.
+This module requires the [crm_di_core][4] plugin **version 0.1.2 or later** for [Fat Free CRM][2] to be installed and setup as per the repository instructions.
 
 
 Installation
