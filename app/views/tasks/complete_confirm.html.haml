@@ -7,7 +7,7 @@
     .MB_alert
       %p
       .mboxcaption
-        = image_tag("di_core/icon_question.png", :alt => "#{@icon}", :style => "float:left; padding-right:0.75em; padding-left:0.25em;")
+        = image_tag("/plugin_assets/crm_di_core/images/icon_question.png", :alt => "#{@icon}", :style => "float:left; padding-right:0.75em; padding-left:0.25em;")
         %span{ :style => "vertical-align:middle;" }
           %b 
             = "#{t :complete_prompt, :scope => [:di, :tasks]} '#{@task.name}' ?"
